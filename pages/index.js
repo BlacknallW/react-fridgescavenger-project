@@ -3,10 +3,9 @@ import Head from "next/head";
 import Nav from "../components/nav";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
-import { baseUrl } from "../config";
+// import { baseUrl } from "../config";
 
 
-console.log("base url is", baseUrl);
 
 const Home = props => (
 	<div>
@@ -29,7 +28,7 @@ const Home = props => (
 );
 
 Home.getInitialProps = async () => {
-	const res = await fetch(baseUrl);
+	const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=cbdb4c6c328541689e7db2d210a6b528&query=cheese&number=10&instructionsRequired=true`);
 	const data = await res.json();
 
 	return {
