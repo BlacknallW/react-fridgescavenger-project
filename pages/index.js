@@ -3,6 +3,10 @@ import Head from "next/head";
 import Nav from "../components/nav";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
+import { baseUrl } from "../config";
+
+
+console.log("base url is", baseUrl);
 
 const Home = props => (
 	<div>
@@ -12,7 +16,7 @@ const Home = props => (
 		</Head>
 		<Nav />
 		<h1>Recipe List</h1>
-		{/* <ol>
+		<ol>
 			{props.recipes.map(recipe => (
 				<li key={recipe.id}>
 					<Link href="/p/[id]" as={`/p/${recipe.id}`}>
@@ -20,19 +24,17 @@ const Home = props => (
 					</Link>
 				</li>
 			))}
-		</ol> */}
+		</ol>
 	</div>
 );
 
-// Home.getInitialProps = async () => {
-// 	const res = await fetch(
-	// 	`https://api.spoonacular.com/recipes/complexSearch?apiKey=cbdb4c6c328541689e7db2d210a6b528&query=cheese&number=10&instructionsRequired=true`
-	// );
-	// const data = await res.json();
+Home.getInitialProps = async () => {
+	const res = await fetch(baseUrl);
+	const data = await res.json();
 
-	// return {
-	// 	recipes: data.results.map(result => result)
-	// };
-// };
+	return {
+		recipes: data.results.map(result => result)
+	};
+};
 
 export default Home;

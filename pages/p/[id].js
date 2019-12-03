@@ -8,14 +8,14 @@ const RecipeDirections = props => (
 
 RecipeDirections.getInitialProps = async context => {
 	const { id } = context.query;
-	// const res = await fetch(
-	// 	`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=cbdb4c6c328541689e7db2d210a6b528`
-	// );
-	// const recipe = await res.json();
+	const res = await fetch(
+		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=cbdb4c6c328541689e7db2d210a6b528`
+	);
+	const recipe = await res.json();
 
-	// const stepOne = recipe[0]["steps"][0]["step"];
+	const stepOne = recipe[0]["steps"][0]["step"];
 
-	// return {stepOne};
+	return { stepOne };
 };
 
 export default RecipeDirections;
