@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Nav from "../components/nav";
-import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 import SearchBar from "../components/SearchBar";
 import Axios from "axios";
-// import { baseUrl } from "../config";
 
 const Home = () => {
 	const [recipes, setRecipes] = useState([]);

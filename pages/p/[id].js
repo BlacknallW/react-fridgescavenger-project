@@ -1,21 +1,30 @@
-import fetch from "isomorphic-unfetch";
+import Axios from "axios";
+import React, { useState } from "react";
 
-const RecipeDirections = props => (
-	<>
-		<h1>{props.stepOne}</h1>
-	</>
-);
+const RecipeDirections = props => {
+	return (
+		<>
+			<ol>
+				{props.steps.map(direction => (
+					<li>{direction}</li>
+				))}
+			</ol>
+		</>
+	);
+};
 
 RecipeDirections.getInitialProps = async context => {
 	const { id } = context.query;
-	const res = await fetch(
+	const res = await Axios.get(
 		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=cbdb4c6c328541689e7db2d210a6b528`
 	);
-	const recipe = await res.json();
+	const recipe = res.data;
 
-	const stepOne = recipe[0]["steps"][0]["step"];
+	const directions = recipe[0]["steps"];
 
-	return { stepOne };
+	console.log(directions)
+
+	return null;
 };
 
 export default RecipeDirections;
