@@ -1,14 +1,17 @@
 import Axios from "axios";
 import React, { useState } from "react";
+import RecipeCard from "../../components/RecipeCard";
 
 const RecipeDirections = props => {
 	return (
 		<>
-			<ol>
-				{props.steps.map(direction => (
-					<li>{direction}</li>
-				))}
-			</ol>
+			<RecipeCard recipeName="Pasta Maybe" ingredients="Don't ask">
+				<ol>
+					{props.steps.map(step => (
+						<li>{step.step}</li>
+					))}
+				</ol>
+			</RecipeCard>
 		</>
 	);
 };
@@ -20,11 +23,11 @@ RecipeDirections.getInitialProps = async context => {
 	);
 	const recipe = res.data;
 
-	const directions = recipe[0]["steps"];
+	const recipeArray = Object.values(recipe);
 
-	console.log(directions)
+	const steps = recipeArray[0].steps;
 
-	return null;
+	return {steps};
 };
 
 export default RecipeDirections;
