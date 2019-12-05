@@ -1,10 +1,10 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import Layout from "../../components/MyLayout"
 import RecipeCard from "../../components/RecipeCard";
 
 const RecipeDirections = props => {
 	return (
-		<>
+		<Layout>
 			<RecipeCard recipeName="Pasta Maybe" ingredients="Don't ask">
 				<ol>
 					{props.steps.map(step => (
@@ -12,7 +12,7 @@ const RecipeDirections = props => {
 					))}
 				</ol>
 			</RecipeCard>
-		</>
+		</Layout>
 	);
 };
 

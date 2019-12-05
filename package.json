@@ -14,6 +14,8 @@
     "pg-promise": "^10.3.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.1",
     "sql-template-strings": "^2.2.2"
   }
 }
