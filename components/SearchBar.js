@@ -18,7 +18,7 @@ const SearchBar = props => {
 							type="text"
 							value={term}
 							onChange={e => setTerm(e.target.value)}
-							placeholder="What do you want to cook today?"
+							placeholder={props.placeholder}
 							className="searchBar input"
 						/>
 					</div>

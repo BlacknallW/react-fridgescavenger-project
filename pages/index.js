@@ -4,6 +4,7 @@ import Link from "next/link";
 import SearchBar from "../components/SearchBar";
 import Axios from "axios";
 import NavBar from "../components/NavBar";
+import uuidv4 from "uuid/v4";
 
 import "../styles/styles.sass";
 
@@ -40,16 +41,21 @@ const Home = () => {
 			</section>
 			<section className="section">
 				<div className="box">
-					<SearchBar onSubmit={onSearchSubmit} />
+					<SearchBar
+						onSubmit={onSearchSubmit}
+						placeholder="What do you want to make today?"
+					/>
 				</div>
 
 				{recipes.map(recipe => (
 					<>
-						<div className="tile is-ancestor box" key={recipe.id}>
+						<div className="tile is-ancestor box">
 							<div className="tile">
 								<div className="content">
-									<figure className="image">
+									<figure>
 										<img
+											key={recipe.id}
+											className="image"
 											className="gridImage"
 											src={recipe.image}
 										/>
@@ -59,7 +65,7 @@ const Home = () => {
 							<div className="tile">
 								<div className="content">
 									<Link href="/p/[id]" as={`/p/${recipe.id}`}>
-										<a className="gridLink">
+										<a key={uuidv4()} className="gridLink">
 											{recipe.title}
 										</a>
 									</Link>
