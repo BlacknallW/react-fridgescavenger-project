@@ -4,6 +4,7 @@ import Link from "next/link";
 import SearchBar from "../components/SearchBar";
 import Axios from "axios";
 
+import '../styles/styles.sass'
 import Layout from "../components/MyLayout";
 
 const Home = () => {
@@ -24,37 +25,72 @@ const Home = () => {
 					<title>FridgeScavenger</title>
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
-				<h1>Fridge Scavenger</h1>
+				<h1 className="title">Fridge Scavenger</h1>
 				<div className="search">
 					<SearchBar onSubmit={onSearchSubmit} />
 				</div>
 			</Layout>
-			<div className="recipeResults">
-				<ol>
+			<div className="recipeGrid">
+				<table className="recipeResults table">
 					{recipes.map(recipe => (
-						<li key={recipe.id}>
-							<img src={recipe.image} />
-							<Link href="/p/[id]" as={`/p/${recipe.id}`}>
-								<a>{recipe.title}</a>
-							</Link>
-						</li>
+						<>
+							<tr key={recipe.id}>
+								<td>
+									<img
+										className="gridImage"
+										src={recipe.image}
+									/>
+								</td>
+								<td>
+									<Link href="/p/[id]" as={`/p/${recipe.id}`}>
+										<a className="gridLink">
+											{recipe.title}
+										</a>
+									</Link>
+								</td>
+							</tr>
+						</>
 					))}
-					<li>
-						<img src="https://wow.olympus.eu/webfile/img/1632/oly_testwow_stage.jpg?x=1024" />
-						<p>Sammy oh god why</p>
-					</li>
-					<li>
-						<img src="https://wp-media.patheos.com/blogs/sites/331/2013/03/bigstock-Test-word-on-white-keyboard-27134336.jpg" />
-						<p>You forced my hand, mother!</p>
-					</li>
-				</ol>
+					<tr>
+						<td>
+							<img
+								className="gridImage"
+								src="https://wow.olympus.eu/webfile/img/1632/oly_testwow_stage.jpg?x=1024"
+							/>
+						</td>
+						<td>
+							<p className="gridLink">Sammy oh god why</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img
+								className="gridImage"
+								src="https://wp-media.patheos.com/blogs/sites/331/2013/03/bigstock-Test-word-on-white-keyboard-27134336.jpg"
+							/>
+						</td>
+						<td>
+							<p className="gridLink">
+								You forced my hand, mother!
+							</p>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<style jsx>
+			{/* <style jsx>
 				{`
 					h1,
-					.search,
-					.recipeResults {
+					.search {
 						text-align: center;
+					}
+
+					.recipeGrid {
+						display: grid;
+						grid-template-columns: 25% auto 25%;
+						grid-template-rows: auto;
+						border: 1px solid #DDD;
+						margin: 20px;
+						padding: 20px;
 					}
 
 					li {
@@ -62,19 +98,24 @@ const Home = () => {
 						list-style: none;
 					}
 
-					li a {
-						float: right;
+					.recipeResults {
+						grid-column: 2;
 					}
 
-					li img {
+					.gridLink {
+						grid-column: 2 / 2;
+					}
+
+					.gridImage {
 						width: 100px;
 						height: 100px;
 						display: block;
 						margin-left: auto;
 						margin-right: auto;
+						grid-column: 2 / 2;
 					}
 				`}
-			</style>
+			</style> */}
 		</>
 	);
 };
