@@ -1,18 +1,22 @@
 import Axios from "axios";
-import Layout from "../../components/MyLayout"
-import RecipeCard from "../../components/RecipeCard";
+import NavBar from "../../components/NavBar";
+import React from "react";
+import "../../styles/styles.sass";
 
-const RecipeDirections = props => {
+const RecipeDirections = (props, context) => {
 	return (
-		<Layout>
-			<RecipeCard recipeName="Pasta Maybe" ingredients="Don't ask">
-				<ol>
+		<>
+			<NavBar />
+			<section className="box container">
+				<h1>Recipe Name:</h1>
+				<p>Ingredients:</p>
+				<ol className="list is-hoverable">
 					{props.steps.map(step => (
-						<li>{step.step}</li>
+						<li className="list-item">{step.step}</li>
 					))}
 				</ol>
-			</RecipeCard>
-		</Layout>
+			</section>
+		</>
 	);
 };
 
@@ -27,7 +31,9 @@ RecipeDirections.getInitialProps = async context => {
 
 	const steps = recipeArray[0].steps;
 
-	return {steps};
+	
+
+	return { steps, recipe };
 };
 
 export default RecipeDirections;
