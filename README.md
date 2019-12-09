@@ -6,12 +6,12 @@ Surely there are many recipe aggregator websites out there, right? Probably. I'm
 
 ## API Calls
 
-# Spoonacular https://spoonacular.com/food-api/
+### Spoonacular https://spoonacular.com/food-api/
 In the beginning, if you read my commit messages, you'll see that I felt this api was the hottest piece of garbage this side of the Brooklyn Bridge. I'm not from Brooklyn, nor have I ever been there or seen the bridge in question. However, I realized after calling more endpoints, that the specific endpoint I was trying to use was formatted in this weird pseudo-JSON, but all of the other endpoints are actually okay. 
 
 One potential problem I can foresee is that I'm using three different endpoints to generate one page of information, because for some reason all of the aforementoned information is spread out between three endpoints. Makes me sad. In any case, Spoonacular's api works pretty similarly to the FDA's food api. You do an initial search to get a bunch of food items, all with a unique id. That same ID is used to call the other endpoints with more specific recipe data such as directions and nutritional information. Meaning, to get one list of directions from a recipe is ultimately 4 calls to separate endpoints of the same api. The only real issue is that after 150 calls per day, the API stops working. By the time I finish this project the user will be able to use 1500 calls per day, which will cost me like $40 a month, which is fine I guess.
 
-# NewsAPI https://newsapi.org/
+### NewsAPI https://newsapi.org/
 I am currently in the process of getting this API to work in a...stylish(?) fashion on the homepage. I can't think of what other imagery to add to the search page itself, and I figure having a few recent and relevant news articles on recipes, food, and cooking will be pleasing on the eyes as long as they are in components are that equally as pleasing on the eyes. We'll see if that comes to fruition.
 
 ## NextJS
