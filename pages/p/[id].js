@@ -8,7 +8,7 @@ const RecipeDirections = props => {
 	return (
 		<>
 			<NavBar />
-			<section className="hero is-info">
+			<section className="hero is-success">
 				<div className="hero-body">
 					<div className="container has-text-centered">
 						<div className="content">
@@ -17,41 +17,69 @@ const RecipeDirections = props => {
 					</div>
 				</div>
 			</section>
-			<section className="box container">
-				<h1>Recipe Name:</h1>
-				<br />
-				<div className="table-container">
-					<table className="table is-bordered is-hoverable is-narrow">
-						<tbody>
-							<tr>
-								<td className="is-selected">
-									<strong>Ingredients</strong>
-								</td>
-								{props.ingredients.ingredients.map(
-									ingredient => (
-										<td key={uuid()}>{ingredient.name}</td>
-									)
-								)}
-							</tr>
-						</tbody>
-					</table>
+			<section className="box section">
+				<h1 className="title has-text-centered">
+					{props.summary.title}
+				</h1>
+				<div className="tile is-ancestor">
+					<div className="tile is-parent">
+						<article className="tile is-child">
+							<figure className="image">
+								<img
+									src={props.summary.image}
+									alt={props.summary.title}
+									style={{
+										borderRadius: 10,
+										marginLeft: "auto",
+										marginRight: "auto",
+										display: "block"
+									}}
+								/>
+							</figure>
+						</article>
+					</div>
+					<div class="tile is-parent is-vertical">
+						<article class="tile is-child notification ">
+							<div class="content">
+								<h1 className="subtitle has-text-centered">
+									Ingredients
+								</h1>
+								<div className="table-container">
+									<table className="table is-bordered is-hoverable is-narrow">
+										<tbody>
+											<tr>
+												{props.ingredients.ingredients.map(
+													ingredient => (
+														<td key={uuid()}>
+															{ingredient.name.toUpperCase()}
+														</td>
+													)
+												)}
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="content"></div>
+							</div>
+						</article>
+						<article class="tile is-child notification">
+							<div class="content">
+								<h1 className="subtitle has-text-centered">
+									Instructions
+								</h1>
+								<ol className="list is-hoverable">
+									{props.steps.map(step => (
+										<li key={uuid()} className="list-item">
+											{step.step}
+										</li>
+									))}
+								</ol>
+								<div class="content"></div>
+							</div>
+						</article>
+					</div>
 				</div>
-				<br />
-				<ol className="list is-hoverable">
-					<li className="list-item is-active">Instructions</li>
-					{props.steps.map(step => (
-						<li key={uuid()} className="list-item">
-							{step.step}
-						</li>
-					))}
-				</ol>
 			</section>
-			<style jsx>{`
-				.table {
-					margin-left: auto;
-					margin-right: auto;
-				}
-			`}</style>
 		</>
 	);
 };
@@ -73,7 +101,13 @@ RecipeDirections.getInitialProps = async context => {
 
 	const ingredients = response.data;
 
-	return { steps, ingredients };
+	const respond = await Axios.get(
+		`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&&apiKey=cbdb4c6c328541689e7db2d210a6b528`
+	);
+
+	const summary = respond.data;
+
+	return { steps, ingredients, summary };
 };
 
 export default RecipeDirections;
