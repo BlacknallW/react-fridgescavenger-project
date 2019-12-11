@@ -3,7 +3,14 @@ import Axios from "axios";
 
 import "../styles/styles.sass";
 
-export default function Test(props) {
+useEffect(() => {
+    
+    return () => {
+        cleanup
+    };
+}, [input])
+
+export default function ArticleCard(props) {
 	return (
 		<>
 			{props.articles.map(article => (
