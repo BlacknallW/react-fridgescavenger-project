@@ -1,8 +1,10 @@
 import Axios from "axios";
-import NavBar from "../../components/NavBar";
 import React from "react";
-import "../../styles/styles.sass";
 import uuid from "uuid/v4";
+
+import "../../styles/styles.sass";
+import NavBar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 
 const RecipeDirections = props => {
 	return (
@@ -19,7 +21,7 @@ const RecipeDirections = props => {
 			</section>
 			<section className="box section">
 				<h1 className="title has-text-centered">
-					{props.summary.title}
+					{props.summary.title.toUpperCase()}
 				</h1>
 				<div className="tile is-ancestor">
 					<div className="tile is-parent">
@@ -80,6 +82,7 @@ const RecipeDirections = props => {
 					</div>
 				</div>
 			</section>
+			<Footer />
 		</>
 	);
 };
