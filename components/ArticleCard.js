@@ -3,17 +3,23 @@ import Axios from "axios";
 
 import "../styles/styles.sass";
 
-useEffect(() => {
-    
-    return () => {
-        cleanup
-    };
-}, [input])
+export default function ArticleCard() {
+	const [articleList, setArticles] = useState([]);
 
-export default function ArticleCard(props) {
+	useEffect(() => {
+		(async () => {
+			const res = await Axios.get(
+				`https://newsapi.org/v2/everything?q=cooking&sortBy=relevancy&apiKey=2412b7d48fe045f08fc92bc9140f561a`
+			);
+
+			const articles = res.data.articles;
+			setArticles(articles);
+		})();
+	},[]);
+
 	return (
 		<>
-			{props.articles.map(article => (
+			{articleList.map(article => (
 				<div className="card box section" style={{}}>
 					<div className="card-image">
 						<a
@@ -58,14 +64,3 @@ export default function ArticleCard(props) {
 		</>
 	);
 }
-
-Test.getInitialProps = async () => {
-	const res = await Axios.get(
-		`https://newsapi.org/v2/everything?q=cooking&sortBy=relevancy&apiKey=2412b7d48fe045f08fc92bc9140f561a`
-	);
-
-	const articles = res.data.articles;
-
-	console.log(typeof articles);
-	return { articles };
-};

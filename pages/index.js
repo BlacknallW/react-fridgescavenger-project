@@ -8,6 +8,7 @@ import SearchBar from "../components/SearchBar";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import "../styles/styles.sass";
+import ArticleCard from "../components/ArticleCard"
 
 const Home = () => {
 	const [recipes, setRecipes] = useState([]);
@@ -75,8 +76,8 @@ const Home = () => {
 						</div>
 					</>
 				))}
-				
 			</section>
+			<ArticleCard />
 			<Footer />
 		</>
 	);

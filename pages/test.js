@@ -5,7 +5,7 @@ import "../styles/styles.sass";
 
 export default function Test(props) {
 	return (
-		<>
+		<><div className="tile is-vertical is-4">
 			{props.articles.map(article => (
 				<div className="card box section" style={{}}>
 					<div className="card-image">
@@ -14,7 +14,7 @@ export default function Test(props) {
 							target="_blank"
 							rel="noreferrer noopener"
 						>
-							<figure className="image is-4by3">
+							<figure className="image">
 								<img
 									src={article.urlToImage}
 									alt="Article caption"
@@ -48,6 +48,7 @@ export default function Test(props) {
 					</div>
 				</div>
 			))}
+            </div>
 		</>
 	);
 }
