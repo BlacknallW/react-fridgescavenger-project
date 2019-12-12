@@ -75,10 +75,10 @@ const Home = () => {
 							</div>
 						</div>
 					</>
-				))}
-			</section>
-			<ArticleCard />
+				))}<ArticleCard />
 			<Footer />
+			</section>
+			
 		</>
 	);
 };

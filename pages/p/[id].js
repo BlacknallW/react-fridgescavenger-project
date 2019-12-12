@@ -40,14 +40,14 @@ const RecipeDirections = props => {
 							</figure>
 						</article>
 					</div>
-					<div class="tile is-parent is-vertical">
-						<article class="tile is-child notification ">
-							<div class="content">
+					<div className="tile is-parent is-vertical">
+						<article className="tile is-child notification ">
+							<div className="content">
 								<h1 className="subtitle has-text-centered">
 									Ingredients
 								</h1>
 								<div className="table-container">
-									<table className="table is-bordered is-hoverable is-narrow">
+									<table className="table is-bordered is-hoverable is-narrow is-flex-touch">
 										<tbody>
 											<tr>
 												{props.ingredients.ingredients.map(
@@ -61,11 +61,11 @@ const RecipeDirections = props => {
 										</tbody>
 									</table>
 								</div>
-								<div class="content"></div>
+								<div className="content"></div>
 							</div>
 						</article>
-						<article class="tile is-child notification">
-							<div class="content">
+						<article className="tile is-child notification">
+							<div className="content">
 								<h1 className="subtitle has-text-centered">
 									Instructions
 								</h1>
@@ -76,7 +76,6 @@ const RecipeDirections = props => {
 										</li>
 									))}
 								</ol>
-								<div class="content"></div>
 							</div>
 						</article>
 					</div>

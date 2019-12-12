@@ -9,7 +9,7 @@ export default function ArticleCard() {
 	useEffect(() => {
 		(async () => {
 			const res = await Axios.get(
-				`https://newsapi.org/v2/everything?q=cooking&sortBy=relevancy&apiKey=2412b7d48fe045f08fc92bc9140f561a`
+				`https://newsapi.org/v2/everything?q=cooking&from=2019-12-11&apiKey=2412b7d48fe045f08fc92bc9140f561a&pageSize=5`
 			);
 
 			const articles = res.data.articles;
@@ -19,6 +19,7 @@ export default function ArticleCard() {
 
 	return (
 		<>
+        <div className="tile is-vertical is-2 is-flex-touch" style={{float:"right"}}>
 			{articleList.map(article => (
 				<div className="card box section" style={{}}>
 					<div className="card-image">
@@ -61,6 +62,7 @@ export default function ArticleCard() {
 					</div>
 				</div>
 			))}
+            </div>
 		</>
 	);
 }
