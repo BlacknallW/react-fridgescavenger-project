@@ -5,6 +5,6 @@ import "../styles/styles.sass";
 
 export default function Test(props) {
 	return (
-
+		<p>Salami</p>
 	);
 }
