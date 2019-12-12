@@ -29,16 +29,11 @@ const Home = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<section className="hero is-info">
+			<section className="hero is-info" style={{ opacity: 0.5 }}>
 				<div className="hero-body">
 					<div className="container has-text-centered">
-						<figure>
-							<img
-								src="https://i.imgur.com/q2PWaEs.png"
-								width="300px"
-								height="300px"
-							/>
-						</figure>
+						<p className="title">Fridge Scavenger</p>
+						<p className="subtitle">What's in the fridge?</p>
 					</div>
 				</div>
 			</section>
@@ -119,11 +114,11 @@ const Home = () => {
 					}
 					.grid-container {
 						display: grid;
-						grid-template-columns: 80% auto;
+						grid-template-columns: 80% 1% auto;
 						grid-template-rows: auto;
 					}
 					.articles {
-						grid-column: 2/2;
+						grid-column: 3/3;
 					}
 					.recipes {
 						grid-column: 1/1;
