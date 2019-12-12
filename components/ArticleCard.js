@@ -19,9 +19,9 @@ export default function ArticleCard() {
 
 	return (
 		<>
-        <div className="tile is-vertical is-flex-touch">
-			{articleList.map(article => (
-				<div className="card box section" style={{}}>
+        <div className="tile is-vertical is-flex-touch" >
+			{articleList.map(article => (<>
+				<div className="card">
 					<div className="card-image">
 						<a
 							href={article.url}
@@ -32,6 +32,7 @@ export default function ArticleCard() {
 								<img
 									src={article.urlToImage}
 									alt="Article caption"
+									
 								/>
 							</figure>
 						</a>
@@ -61,6 +62,8 @@ export default function ArticleCard() {
 						</div>
 					</div>
 				</div>
+				<br/>
+				</>
 			))}
             </div>
 		</>

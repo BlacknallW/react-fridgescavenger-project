@@ -55,8 +55,13 @@ const Scavenge = () => {
 									<div className="content">
 										<figure className="image">
 											<img
-												className="gridImage"
 												src={recipe.image}
+												style={{
+													borderRadius: 10,
+													marginLeft: "auto",
+													marginRight: "auto",
+													display: "block"
+												}}
 											/>
 										</figure>
 									</div>
@@ -85,9 +90,23 @@ const Scavenge = () => {
 				<Footer />
 			</div>
 			<style jsx>
-				{
-					"html, .body {height:100%; margin:0;} .footer{height:50px;} .body{display: flex; flex-direction:column} footer{margin-top:auto;}"
-				}
+				{`
+					html,
+					.body {
+						height: 100%;
+						margin: 0;
+					}
+					.footer {
+						height: 50px;
+					}
+					.body {
+						display: flex;
+						flex-direction: column;
+					}
+					footer {
+						margin-top: auto;
+					}
+				`}
 			</style>
 		</>
 	);

@@ -43,7 +43,7 @@ const Home = () => {
 				</div>
 			</section>
 
-			<div className="body">
+			<div className="body is-flex-touch">
 				<section className="section">
 					<div className="box">
 						<SearchBar
@@ -52,43 +52,49 @@ const Home = () => {
 						/>
 					</div>
 					<div className="grid-container">
-					<div className="recipes-box">
-					{recipes.map(recipe => (
-						<>
-							<div className="tile is-ancestor box">
-								<div className="tile">
-									<div className="content">
-										<figure>
-											<img
-												key={recipe.id}
-												className="image"
-												className="gridImage"
-												src={recipe.image}
-											/>
-										</figure>
+						<div className="recipes-box">
+							{recipes.map(recipe => (
+								<>
+									<div className="tile is-ancestor box">
+										<div className="tile">
+											<div className="content">
+												<figure>
+													<img
+														key={recipe.id}
+														className="image"
+														src={recipe.image}
+														style={{
+															borderRadius: 10,
+															marginLeft: "auto",
+															marginRight: "auto",
+															display: "block"
+														}}
+													/>
+												</figure>
+											</div>
+										</div>
+										<div className="tile">
+											<div className="content">
+												<Link
+													href="/p/[id]"
+													as={`/p/${recipe.id}`}
+												>
+													<a key={uuidv4()}>
+														<p className="has-text-centered">
+															{recipe.title}
+														</p>
+													</a>
+												</Link>
+											</div>
+										</div>
 									</div>
-								</div>
-								<div className="tile">
-									<div className="content">
-										<Link
-											href="/p/[id]"
-											as={`/p/${recipe.id}`}
-										>
-											<a
-												key={uuidv4()}
-												className="gridLink"
-											>
-												{recipe.title}
-											</a>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</>
-					))}</div>
-					<div className="articles">
-						<ArticleCard />
-					</div></div>
+								</>
+							))}
+						</div>
+						<div className="articles">
+							<ArticleCard />
+						</div>
+					</div>
 				</section>
 			</div>
 			<div className="footer">
@@ -112,16 +118,23 @@ const Home = () => {
 						margin-top: auto;
 					}
 					.grid-container {
-						display:grid;
+						display: grid;
 						grid-template-columns: 80% auto;
 						grid-template-rows: auto;
-
 					}
 					.articles {
-						grid-column: 2/2
+						grid-column: 2/2;
 					}
 					.recipes {
-						grid-column: 1/1
+						grid-column: 1/1;
+					}
+					.body {
+						font-family: "Dosis", sans-serif;
+						font-size: 20px;
+						background-image: url("https://i.imgur.com/X4qREVj.jpg");
+						background-repeat: no-repeat;
+						background-attachment: fixed;
+						background-size: cover;
 					}
 				`}
 			</style>
