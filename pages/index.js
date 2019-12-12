@@ -51,7 +51,8 @@ const Home = () => {
 							placeholder="What do you want to make today?"
 						/>
 					</div>
-
+					<div className="grid-container">
+					<div className="recipes-box">
 					{recipes.map(recipe => (
 						<>
 							<div className="tile is-ancestor box">
@@ -84,19 +85,45 @@ const Home = () => {
 								</div>
 							</div>
 						</>
-					))}
+					))}</div>
 					<div className="articles">
 						<ArticleCard />
-					</div>
+					</div></div>
 				</section>
 			</div>
 			<div className="footer">
 				<Footer />
 			</div>
 			<style jsx>
-				{
-					"html, .body {height:100%; margin:0;} .footer{height:50px;} .body{display: flex; flex-direction:column} footer{margin-top:auto;}"
-				}
+				{`
+					html,
+					.body {
+						height: 100%;
+						margin: 0;
+					}
+					.footer {
+						height: 50px;
+					}
+					.body {
+						display: flex;
+						flex-direction: column;
+					}
+					footer {
+						margin-top: auto;
+					}
+					.grid-container {
+						display:grid;
+						grid-template-columns: 80% auto;
+						grid-template-rows: auto;
+
+					}
+					.articles {
+						grid-column: 2/2
+					}
+					.recipes {
+						grid-column: 1/1
+					}
+				`}
 			</style>
 		</>
 	);

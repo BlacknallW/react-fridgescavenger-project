@@ -19,7 +19,7 @@ export default function ArticleCard() {
 
 	return (
 		<>
-        <div className="tile is-vertical is-2 is-flex-touch" style={{float:"right"}}>
+        <div className="tile is-vertical is-flex-touch">
 			{articleList.map(article => (
 				<div className="card box section" style={{}}>
 					<div className="card-image">
