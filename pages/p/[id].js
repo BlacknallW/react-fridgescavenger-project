@@ -24,9 +24,9 @@ const RecipeDirections = props => {
 					{props.summary.title.toUpperCase()}
 				</h1>
 				<div className="tile is-ancestor">
-					<div className="tile is-parent">
+					<div className="tile is-parent is-flex-touch">
 						<article className="tile is-child">
-							<figure className="image">
+							<figure className="image ">
 								<img
 									src={props.summary.image}
 									alt={props.summary.title}
@@ -40,14 +40,14 @@ const RecipeDirections = props => {
 							</figure>
 						</article>
 					</div>
-					<div className="tile is-parent is-vertical">
+					<div className="tile is-parent is-vertical is-flex-touch">
 						<article className="tile is-child notification ">
 							<div className="content">
 								<h1 className="subtitle has-text-centered">
 									Ingredients
 								</h1>
 								<div className="table-container">
-									<table className="table is-bordered is-hoverable is-narrow is-flex-touch">
+									<table className="table is-bordered is-hoverable is-narrow ">
 										<tbody>
 											<tr>
 												{props.ingredients.ingredients.map(

@@ -9,7 +9,7 @@ export default function ArticleCard() {
 	useEffect(() => {
 		(async () => {
 			const res = await Axios.get(
-				`https://newsapi.org/v2/everything?q=cooking&from=2019-12-11&apiKey=2412b7d48fe045f08fc92bc9140f561a&pageSize=5`
+				`https://newsapi.org/v2/everything?q=cooking -fuckton -fuck -shit -damn -bitch -ass -fucking&from=2019-12-11&apiKey=2412b7d48fe045f08fc92bc9140f561a&pageSize=5`
 			);
 
 			const articles = res.data.articles;
