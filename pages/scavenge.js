@@ -4,7 +4,7 @@ import Link from "next/link";
 import Axios from "axios";
 import uuidv4 from "uuid/v4";
 
-import "../styles/styles.sass";
+
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";

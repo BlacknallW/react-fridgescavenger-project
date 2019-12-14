@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Axios from "axios";
@@ -7,8 +7,9 @@ import uuidv4 from "uuid/v4";
 import SearchBar from "../components/SearchBar";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import "../styles/styles.sass";
+// import "../styles/styles.sass";
 import ArticleCard from "../components/ArticleCard";
+import database from "../lib/db.js";
 
 const Home = () => {
 	const [recipes, setRecipes] = useState([]);
@@ -37,7 +38,7 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
-
+			<p></p>
 			<div className="body is-flex-touch">
 				<section className="section">
 					<div className="box">

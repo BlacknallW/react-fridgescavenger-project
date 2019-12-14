@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import uuidv4 from "uuid/v4";
 
-import "../styles/styles.sass";
+
 
 export default function ArticleCard() {
 	const [articleList, setArticles] = useState([]);
