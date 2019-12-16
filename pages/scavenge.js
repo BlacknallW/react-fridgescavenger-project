@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import Axios from "axios";
 import uuidv4 from "uuid/v4";
 
-
-import NavBar from "../components/NavBar";
+import Layout from "../components/Layout";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import ArticleCard from "../components/ArticleCard";
@@ -22,83 +20,81 @@ const Scavenge = () => {
 	};
 	return (
 		<>
-			<NavBar />
-			<Head>
-				<title>FridgeScavenger</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-
-			<section className="hero is-info" style={{opacity: .5}}>
-				<div className="hero-body">
-					<div className="container has-text-centered">
-						<h1 className="title">Scavenge</h1>
-						<p className="subtitle">
-							Find recipes based on ingredients you already own!
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<div className="body is-flex-touch">
-				<section className="section">
-					<div className="box">
-						<SearchBar
-							onSubmit={onSearchSubmit}
-							placeholder="Type in your ingredients, separated by commas."
-						/>
-					</div>
-					<div className="grid-container">
-						<div className="recipes-box">
-							{recipes.map(recipe => (
-								<>
-									<div
-										className="tile is-ancestor box"
-										key={recipe.id}
-									>
-										<div className="tile">
-											<div className="content">
-												<figure className="image">
-													<img
-														src={recipe.image}
-														style={{
-															borderRadius: 10,
-															marginLeft: "auto",
-															marginRight: "auto",
-															display: "block"
-														}}
-													/>
-												</figure>
-											</div>
-										</div>
-										<div className="tile">
-											<div className="content">
-												<Link
-													href="/p/[id]"
-													as={`/p/${recipe.id}`}
-												>
-													<a key={uuidv4()}>
-														<p className="has-text-centered">
-															{recipe.title}
-														</p>
-													</a>
-												</Link>
-											</div>
-										</div>
-									</div>
-								</>
-							))}
-						</div>
-						<div className="articles">
-							<ArticleCard />
+			<Layout>
+				<section className="hero is-info" style={{ opacity: 0.5 }}>
+					<div className="hero-body">
+						<div className="container has-text-centered">
+							<h1 className="title">Scavenge</h1>
+							<p className="subtitle">
+								Find recipes based on ingredients you already
+								own!
+							</p>
 						</div>
 					</div>
 				</section>
-			</div>
 
-			<div className="footer">
-				<Footer />
-			</div>
+				<div className="body is-flex-touch">
+					<section className="section">
+						<div className="box">
+							<SearchBar
+								onSubmit={onSearchSubmit}
+								placeholder="Type in your ingredients, separated by commas."
+							/>
+						</div>
+						<div className="grid-container">
+							<div className="recipes-box">
+								{recipes.map(recipe => (
+									<>
+										<div
+											className="tile is-ancestor box"
+											key={recipe.id}
+										>
+											<div className="tile">
+												<div className="content">
+													<figure className="image">
+														<img
+															src={recipe.image}
+															style={{
+																borderRadius: 10,
+																marginLeft:
+																	"auto",
+																marginRight:
+																	"auto",
+																display: "block"
+															}}
+														/>
+													</figure>
+												</div>
+											</div>
+											<div className="tile">
+												<div className="content">
+													<Link
+														href="/p/[id]"
+														as={`/p/${recipe.id}`}
+													>
+														<a key={uuidv4()}>
+															<p className="has-text-centered">
+																{recipe.title}
+															</p>
+														</a>
+													</Link>
+												</div>
+											</div>
+										</div>
+									</>
+								))}
+							</div>
+							<div className="articles">
+								<ArticleCard />
+							</div>
+						</div>
+					</section>
+				</div>
 
+				<div className="footer">
+					<Footer />
+				</div>
+			</Layout>
 			<style jsx>
 				{`
 					html,

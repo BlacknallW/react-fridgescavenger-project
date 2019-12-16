@@ -2,14 +2,13 @@ import Axios from "axios";
 import React from "react";
 import uuid from "uuid/v4";
 
-import "../../styles/styles.sass";
-import NavBar from "../../components/NavBar";
+import Layout from "../../components/Layout"
 import Footer from "../../components/Footer";
 
 const RecipeDirections = props => {
 	return (
 		<>
-			<NavBar />
+		<Layout>
 			<section className="hero is-success">
 				<div className="hero-body">
 					<div className="container has-text-centered">
@@ -82,6 +81,7 @@ const RecipeDirections = props => {
 				</div>
 			</section>
 			<Footer />
+			</Layout>
 		</>
 	);
 };
