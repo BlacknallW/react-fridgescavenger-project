@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import {loadFirebase} from "../lib/db"
+import { loadFirebase } from "../lib/db";
 
-Test.getInitialProps = async () => {
-	let firebase = await loadFirebase()
-	let result = await new Promise((resolve,reject) => {
-		firebase.firestore().collection('users')
+Test.getInitialProps = () => {
+	return loadFirebase()
+		.firestore()
+		.collection("users")
 		.limit(10)
 		.get()
 		.then(snapshot => {
-			let data = []
-			snapshot.forEach((doc) => {
-				data.push(
-					Object.assign({id: doc.id}, doc.data())
-				)
-			})
-			resolve(data)
-		})
-		.catch(error => {
-			reject([])
-		})
-	})
-	console.log(result)
-	return {result}
-}
+			let data = [];
+			snapshot.forEach(doc => {
+				data.push({ id: doc.id, ...doc.data() });
+			});
+			return { users: data };
+		});
+};
 
 export default function Test(props) {
-	return (<>
-		{props.result.map(results => <p>{results.username}</p>)}
-	</>);
+	return (
+		<>
+			{props.users.map(results => (
+				<p key={results.id}>{results.username}</p>
+			))}
+		</>
+	);
 }
-
-
