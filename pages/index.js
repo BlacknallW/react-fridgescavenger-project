@@ -5,7 +5,7 @@ import Axios from "axios";
 import uuidv4 from "uuid/v4";
 
 import SearchBar from "../components/SearchBar";
-import NavBar from "../components/NavBar";
+import Layout from "../components/Layout"
 import Footer from "../components/Footer";
 // import "../styles/styles.sass";
 import ArticleCard from "../components/ArticleCard";
@@ -24,12 +24,7 @@ const Home = () => {
 
 	return (
 		<>
-			<NavBar />
-			<Head>
-				<title>FridgeScavenger</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-
+		<Layout>
 			<section className="hero is-info" style={{ opacity: 0.5 }}>
 				<div className="hero-body">
 					<div className="container has-text-centered">
@@ -96,6 +91,7 @@ const Home = () => {
 			<div className="footer">
 				<Footer />
 			</div>
+			</Layout>
 			<style jsx>
 				{`
 					html,
