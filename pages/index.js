@@ -6,9 +6,7 @@ import uuidv4 from "uuid/v4";
 import SearchBar from "../components/SearchBar";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
-// import "../styles/styles.sass";
 import ArticleCard from "../components/ArticleCard";
-
 
 const Home = () => {
 	const [recipes, setRecipes] = useState([]);
