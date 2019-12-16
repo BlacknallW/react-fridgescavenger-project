@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 // import "../styles/styles.sass";
 import ArticleCard from "../components/ArticleCard";
-import database from "../lib/db.js";
+
 
 const Home = () => {
 	const [recipes, setRecipes] = useState([]);
