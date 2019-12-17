@@ -3,9 +3,16 @@ import "firebase/firestore";
 import { loadFirebase } from "../lib/db";
 
 const LoginForm = () => {
-	const [createUsername, setCreateUsername] = useState("");
-	const [createPassword, setCreatePassword] = useState("");
-	const db = loadFirebase().firestore();
+	const [loginUsername, setCreateUsername] = useState("");
+	const [loginPassword, setCreatePassword] = useState("");
+    const db = loadFirebase().firestore();
+    db.collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+        });
+    });
+
+    
 
 	const updateValues = () => {
 		setCreateUsername(document.querySelector("#loginUsername").value);
@@ -21,7 +28,7 @@ const LoginForm = () => {
 						className="input"
 						type="text"
 						id="loginUsername"
-						value={createUsername}
+						value={loginUsername}
 						onChange={e => updateValues()}
 					></input>
 				</div>
@@ -31,7 +38,7 @@ const LoginForm = () => {
 						className="input"
 						type="password"
 						id="loginPassword"
-						value={createPassword}
+						value={loginPassword}
 						onChange={e => updateValues()}
 					></input>
 				</div>

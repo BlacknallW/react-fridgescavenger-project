@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "firebase/firestore";
 import { loadFirebase } from "../lib/db";
 
+
 const SignupForm = () => {
 	const [createUsername, setCreateUsername] = useState("");
 	const [createPassword, setCreatePassword] = useState("");
@@ -19,6 +20,7 @@ const SignupForm = () => {
 	};
 
 	const createUser = () => {
+
 		db.collection("users")
 			.add({
 				username: createUsername,
@@ -30,7 +32,7 @@ const SignupForm = () => {
 			})
 			.catch(function(error) {
 				console.error("Error adding document: ", error);
-			});
+            });
 	};
 
 	const updateValues = () => {
