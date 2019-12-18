@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "../components/Layout";
-import cookies from "next-cookies";
+import Footer from "../components/Footer";
 
 import SignupForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";
@@ -9,26 +9,48 @@ export default function UserLogin() {
 	return (
 		<>
 			<Layout>
-				<div className="tile is-ancestor section">
-					<div className="tile is-parent">
-						<div className="tile is-child box">
-							<LoginForm />
+				<div className="body">
+					<div className="tile is-ancestor section">
+						<div className="tile is-parent">
+							<div className="tile is-child box">
+								<LoginForm />
+							</div>
 						</div>
-					</div>
-					<div className="tile is-parent">
-						<div className="tile is-child box">
-							<SignupForm />
+						<div className="tile is-parent">
+							<div className="tile is-child box">
+								<SignupForm />
+							</div>
 						</div>
 					</div>
 				</div>
 			</Layout>
+			<div className="footer">
+				<Footer />
+			</div>
+
+			<style jsx>{`
+				html,
+				.body {
+					height: 100%;
+					margin: 0;
+				}
+				.footer {
+					height: 50px;
+				}
+				footer {
+					margin-top: auto;
+				}
+				.body {
+					font-family: "Dosis", sans-serif;
+					font-size: 20px;
+					background-image: url("https://i.imgur.com/X4qREVj.jpg");
+					background-repeat: no-repeat;
+					background-attachment: fixed;
+					background-size: cover;
+					display: flex;
+					flex-direction: column;
+				}
+			`}</style>
 		</>
 	);
 }
-
-UserLogin.getInitialProps = ctx => {
-	return {
-		account: cookies(ctx).account || "",
-		token: cookies(ctx).token || ""
-	};
-};

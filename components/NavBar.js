@@ -16,6 +16,13 @@ export default function Navbar() {
 				<a href="/scavenge" className="navbar-item">
 					Scavenge
 				</a>
+				<div className="loginButton navbar-item">
+					<a href="/userlogin">
+						<button className=" button is-success">
+							Login/ Signup
+						</button>
+					</a>
+				</div>
 			</div>
 		</nav>
 	);

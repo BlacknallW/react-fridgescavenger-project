@@ -45,7 +45,7 @@ const SignupForm = () => {
 	};
 	return (
 		<>
-			<p className="title">New around here? Sign up!</p>
+			<p className="title has-text-centered">New around here? Sign up!</p>
 			<form>
 				<div className="field">
 					<label className="label">Username</label>

@@ -39,7 +39,9 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<>
-				<p className="title">Already a member? Sign in!</p>
+				<p className="title has-text-centered">
+					Already a member? Sign in!
+				</p>
 				<form className="field ">
 					<label className="label">Email Address:</label>
 					<div className="control">
