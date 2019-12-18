@@ -13,7 +13,7 @@ const Home = () => {
 
 	const onSearchSubmit = async term => {
 		const res = await Axios.get(
-			`https://api.spoonacular.com/recipes/complexSearch?apiKey=cbdb4c6c328541689e7db2d210a6b528&query=${term}&number=20&instructionsRequired=true`
+			`https://api.spoonacular.com/recipes/complexSearch?apiKey=cbdb4c6c328541689e7db2d210a6b528&query=${term}&number=50&instructionsRequired=true`
 		);
 
 		setRecipes(res.data.results);

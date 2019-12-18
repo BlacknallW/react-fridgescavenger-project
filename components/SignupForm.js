@@ -29,7 +29,11 @@ const SignupForm = () => {
 		if (response.data === "success") {
 			alert(
 				`Account successfully created! Thank you for joining us, ${createUsername}!`
-			);
+			)
+			setCreateUsername("")
+			setCreatePassword("")
+			setCreateEmailAddress("")
+			setConfirmPassword("");
 		} else {
 			alert(
 				"Something went wrong. Your account name and email may already be in use."
@@ -45,7 +49,7 @@ const SignupForm = () => {
 	};
 	return (
 		<>
-			<p className="title has-text-centered">New around here? Sign up!</p>
+			<p className="title has-text-centered">New Around Here? Sign Up!</p>
 			<form>
 				<div className="field">
 					<label className="label">Username</label>

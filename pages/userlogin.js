@@ -23,11 +23,11 @@ export default function UserLogin() {
 						</div>
 					</div>
 				</div>
-			</Layout>
+			
 			<div className="footer">
 				<Footer />
 			</div>
-
+</Layout>
 			<style jsx>{`
 				html,
 				.body {
