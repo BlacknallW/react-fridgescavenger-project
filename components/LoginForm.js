@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import cookies from "next-cookies";
 
-const LoginForm = () => {
-	const [loginEmail, setEmail] = useState("");
-	const [loginPassword, setCreatePassword] = useState("");
-
-	const updateValues = () => {
-		setEmail(document.querySelector("#loginUsername").value);
-		setCreatePassword(document.querySelector("#loginPassword").value);
+class LoginForm extends React.Component {
+	state = {
+		loginEmail: "",
+		loginPassword: ""
 	};
 
-	const loginSend = async () => {
+	static async getInitialProps(ctx) {
+		return {
+			account: cookies(ctx).account || "",
+			token: cookies(ctx).token || ""
+		};
+	}
+
+	updateValues = () => {
+		this.setState({
+			loginEmail: document.querySelector("#loginUsername").value,
+			loginPassword: document.querySelector("#loginPassword").value
+		});
+	};
+
+	loginSend = async () => {
 		event.preventDefault();
 		const response = await axios.post(`http://localhost:5252/users/login`, {
-			password: loginPassword,
-			email: loginUsername
+			password: this.state.loginPassword,
+			email: this.state.loginEmail
 		});
 		if (!response.data.browser_token) {
 			alert("Wrong email address or password");
@@ -25,42 +36,43 @@ const LoginForm = () => {
 			alert("Successfully logged in");
 		}
 	};
-
-	return (
-		<>
-			<p className="title">Already a member? Sign in!</p>
-			<form className="field ">
-				<label className="label">Email Address:</label>
-				<div className="control">
-					<input
-						className="input"
-						type="text"
-						id="loginUsername"
-						value={loginEmail}
-						onChange={e => updateValues()}
-					></input>
-				</div>
-				<label className="label">Password</label>
-				<div className="control">
-					<input
-						className="input"
-						type="password"
-						id="loginPassword"
-						value={loginPassword}
-						onChange={e => updateValues()}
-					></input>
-				</div>
-				<br />
-				<button
-					type="submit"
-					className="button is-success"
-					onClick={loginSend}
-				>
-					Login
-				</button>
-			</form>
-		</>
-	);
-};
+	render() {
+		return (
+			<>
+				<p className="title">Already a member? Sign in!</p>
+				<form className="field ">
+					<label className="label">Email Address:</label>
+					<div className="control">
+						<input
+							className="input"
+							type="text"
+							id="loginUsername"
+							value={this.state.loginEmail}
+							onChange={e => this.updateValues()}
+						></input>
+					</div>
+					<label className="label">Password</label>
+					<div className="control">
+						<input
+							className="input"
+							type="password"
+							id="loginPassword"
+							value={this.state.loginPassword}
+							onChange={e => this.updateValues()}
+						></input>
+					</div>
+					<br />
+					<button
+						type="submit"
+						className="button is-success"
+						onClick={this.loginSend}
+					>
+						Login
+					</button>
+				</form>
+			</>
+		);
+	}
+}
 
 export default LoginForm;
