@@ -5,6 +5,7 @@ import "firebase/firestore";
 
 import SignupForm from "../components/SignupForm"
 import LoginForm from "../components/LoginForm"
+import GoogleLogin from "../components/GoogleLogin"
 
 UserLogin.getInitialProps = async () => {
 	const snapshot = await loadFirebase()
@@ -22,6 +23,7 @@ export default function UserLogin(props) {
 	return (
 		<>
 			<Layout>
+				<GoogleLogin/>
 				{props.users.map(results => (
 					<p key={results.id}>{results.username}</p>
 				))}

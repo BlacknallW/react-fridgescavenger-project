@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import firebase from "firebase/app"
+import "firebase/auth"
 import "firebase/firestore";
 import { loadFirebase } from "../lib/db";
 
@@ -8,7 +10,9 @@ const SignupForm = () => {
 	const [createPassword, setCreatePassword] = useState("");
 	const [createEmailAddress, setCreateEmailAddress] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-	const db = loadFirebase().firestore();
+    const db = loadFirebase().firestore();
+    const provider = new firebase.auth.GoogleAuthProvider()
+    firebase.auth().signInWithRedirect(provider);
 
 	const onFormSubmit = e => {
 		e.preventDefault();
