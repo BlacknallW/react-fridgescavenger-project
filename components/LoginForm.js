@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import cookies from "next-cookies";
 
 const LoginForm = () => {
 	const [loginEmail, setEmail] = useState("");
@@ -21,7 +23,6 @@ const LoginForm = () => {
 			document.cookie = `account=${response.data.account_name}; `;
 			document.cookie = `token=${response.data.browser_token}; `;
 			alert("Successfully logged in");
-			Router.push("/recipes");
 		}
 	};
 
@@ -53,7 +54,7 @@ const LoginForm = () => {
 				<button
 					type="submit"
 					className="button is-success"
-					onClick={e => loginSend}
+					onClick={loginSend}
 				>
 					Login
 				</button>

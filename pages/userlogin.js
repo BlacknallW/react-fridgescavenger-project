@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
+import cookies from "next-cookies";
 
-
-import SignupForm from "../components/SignupForm"
-import LoginForm from "../components/LoginForm"
-
-
+import SignupForm from "../components/SignupForm";
+import LoginForm from "../components/LoginForm";
 
 export default function UserLogin() {
 	return (
@@ -27,3 +25,10 @@ export default function UserLogin() {
 		</>
 	);
 }
+
+UserLogin.getInitialProps = ctx => {
+	return {
+		account: cookies(ctx).account || "",
+		token: cookies(ctx).token || ""
+	};
+};

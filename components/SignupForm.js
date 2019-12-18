@@ -7,6 +7,7 @@ const SignupForm = () => {
 	const [createPassword, setCreatePassword] = useState("");
 	const [createEmailAddress, setCreateEmailAddress] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+
 	const onFormSubmit = e => {
 		e.preventDefault();
 		if (createPassword !== confirmPassword) {
@@ -17,25 +18,23 @@ const SignupForm = () => {
 	};
 
 	const createUser = async () => {
-		const url = "http://localhost:5252/users/sign-up"
-		const data = {
-			account: createUsername,
-			email: createEmailAddress,
-			password: setCreatePassword
-		};
-		const options = {
-			method: "POST",
-			headers: { "content-type": "application/x-www-form-urlencoded" },
-			data: qs.stringify(data),
-			url
-		};
-		await axios(options)
-			.then(() => {
-				console.log("User has been created", createUsername);
-			})
-			.catch(error => {
-				console.error("Error adding document: ", error);
-			});
+		const response = await axios.post(
+			"http://localhost:5252/users/sign-up",
+			{
+				account: createUsername,
+				password: createPassword,
+				email: createEmailAddress
+			}
+		);
+		if (response.data === "success") {
+			alert(
+				`Account successfully created! Thank you for joining us, ${createUsername}!`
+			);
+		} else {
+			alert(
+				"Something went wrong. Your account name and email may already be in use."
+			);
+		}
 	};
 
 	const updateValues = () => {
