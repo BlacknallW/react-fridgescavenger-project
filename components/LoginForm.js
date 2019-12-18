@@ -1,34 +1,41 @@
 import React, { useState } from "react";
-import "firebase/firestore";
-import { loadFirebase } from "../lib/db";
 
 const LoginForm = () => {
-	const [loginUsername, setCreateUsername] = useState("");
+	const [loginEmail, setEmail] = useState("");
 	const [loginPassword, setCreatePassword] = useState("");
-    const db = loadFirebase().firestore();
-    db.collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-        });
-    });
-
-    
 
 	const updateValues = () => {
-		setCreateUsername(document.querySelector("#loginUsername").value);
+		setEmail(document.querySelector("#loginUsername").value);
 		setCreatePassword(document.querySelector("#loginPassword").value);
 	};
+
+	const loginSend = async () => {
+		event.preventDefault();
+		const response = await axios.post(`http://localhost:5252/users/login`, {
+			password: loginPassword,
+			email: loginUsername
+		});
+		if (!response.data.browser_token) {
+			alert("Wrong email address or password");
+		} else {
+			document.cookie = `account=${response.data.account_name}; `;
+			document.cookie = `token=${response.data.browser_token}; `;
+			alert("Successfully logged in");
+			Router.push("/recipes");
+		}
+	};
+
 	return (
 		<>
 			<p className="title">Already a member? Sign in!</p>
 			<form className="field ">
-				<label className="label">Username</label>
+				<label className="label">Email Address:</label>
 				<div className="control">
 					<input
 						className="input"
 						type="text"
 						id="loginUsername"
-						value={loginUsername}
+						value={loginEmail}
 						onChange={e => updateValues()}
 					></input>
 				</div>
@@ -46,7 +53,7 @@ const LoginForm = () => {
 				<button
 					type="submit"
 					className="button is-success"
-					onClick={e => e.preventDefault}
+					onClick={e => loginSend}
 				>
 					Login
 				</button>

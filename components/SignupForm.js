@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/firestore";
-import { loadFirebase } from "../lib/db";
-
+import axios from "axios";
+import qs from "qs";
 
 const SignupForm = () => {
 	const [createUsername, setCreateUsername] = useState("");
 	const [createPassword, setCreatePassword] = useState("");
 	const [createEmailAddress, setCreateEmailAddress] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-    const db = loadFirebase().firestore();
-    const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithRedirect(provider);
-
 	const onFormSubmit = e => {
 		e.preventDefault();
 		if (createPassword !== confirmPassword) {
@@ -23,20 +16,26 @@ const SignupForm = () => {
 		}
 	};
 
-	const createUser = () => {
-
-		db.collection("users")
-			.add({
-				username: createUsername,
-				password: createPassword,
-				emailaddress: createEmailAddress
+	const createUser = async () => {
+		const url = "http://localhost:5252/users/sign-up"
+		const data = {
+			account: createUsername,
+			email: createEmailAddress,
+			password: setCreatePassword
+		};
+		const options = {
+			method: "POST",
+			headers: { "content-type": "application/x-www-form-urlencoded" },
+			data: qs.stringify(data),
+			url
+		};
+		await axios(options)
+			.then(() => {
+				console.log("User has been created", createUsername);
 			})
-			.then(function(docRef) {
-				console.log("Document written with ID: ", docRef.id);
-			})
-			.catch(function(error) {
+			.catch(error => {
 				console.error("Error adding document: ", error);
-            });
+			});
 	};
 
 	const updateValues = () => {
