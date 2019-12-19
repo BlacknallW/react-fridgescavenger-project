@@ -35,7 +35,7 @@ const SignupForm = () => {
 			setConfirmPassword("");
 		} else {
 			alert(
-				"Something went wrong. Your account name and email may already be in use."
+				"Something went wrong. Your account name or email may already be in use."
 			);
 		}
 	};

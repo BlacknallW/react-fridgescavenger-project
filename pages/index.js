@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Axios from "axios";
 import uuidv4 from "uuid/v4";
+import cookies from "next-cookies"
 
 import SearchBar from "../components/SearchBar";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import ArticleCard from "../components/ArticleCard";
 
-const Home = () => {
+const Home = (props) => {
 	const [recipes, setRecipes] = useState([]);
 
 	const onSearchSubmit = async term => {
 		const res = await Axios.get(
-			`https://api.spoonacular.com/recipes/complexSearch?apiKey=aeeadf9c72f14c55befd99ff1e40a70d&query=${term}&number=50&instructionsRequired=true`
+			`https://api.spoonacular.com/recipes/complexSearch?apiKey=aeeadf9c72f14c55befd99ff1e40a70d&query=${term}&number=30&instructionsRequired=true`
 		);
 
 		setRecipes(res.data.results);
@@ -21,7 +22,7 @@ const Home = () => {
 
 	return (
 		<>
-			<Layout>
+			<Layout account={props.account}>
 				<section className="hero is-info" style={{ opacity: 0.5 }}>
 					<div className="hero-body">
 						<div className="container has-text-centered">
@@ -133,3 +134,10 @@ const Home = () => {
 };
 
 export default Home;
+
+Home.getInitialProps = (ctx) => {
+	return {
+		account: cookies(ctx).account || "",
+		token: cookies(ctx).token || ""
+	};
+}

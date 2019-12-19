@@ -22,12 +22,12 @@ const RecipeDirections = props => {
 
 	return (
 		<>
-			<Layout>
+			<Layout account={props.account}>
 				<section className="hero is-success">
 					<div className="hero-body">
 						<div className="container has-text-centered">
 							<div className="content">
-								<p className="title">{props.account}</p>
+								<p className="title">Time to get cookin'!</p>
 							</div>
 						</div>
 					</div>

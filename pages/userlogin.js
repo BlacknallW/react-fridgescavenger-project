@@ -10,7 +10,7 @@ export default function UserLogin() {
 	return (
 		<>
 			<Layout>
-				<div className="body">
+				<div className="body is-flex-touch">
 					<div className="tile is-ancestor section">
 						<div className="tile is-parent">
 							<div className="tile is-child box">

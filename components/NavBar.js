@@ -3,19 +3,18 @@ import cookies from "next-cookies";
 import Router from "next/router";
 
 export default class Navbar extends React.Component {
-
 	static async getInitialProps(ctx) {
 		return {
 			account: cookies(ctx).account || "",
 			token: cookies(ctx).token || ""
 		};
 	}
-	
+
 	reset = e => {
 		e.preventDefault();
 		document.cookie = `account=deleted;expires=Thu, 01 Jan 1970 00:00:01 GMT `;
 		document.cookie = `token=deleted; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-		alert("You have successfully logged out. Take care!")
+		alert("You have successfully logged out. Take care!");
 		Router.push("/");
 	};
 
@@ -39,9 +38,13 @@ export default class Navbar extends React.Component {
 					<a href="/scavenge" className="navbar-item">
 						Scavenge
 					</a>
-					<a href="/userprofile" className="navbar-item">
-						Profile
-					</a>
+					{!this.props.account ? (
+						<p></p>
+					) : (
+						<a href="/userprofile" className="navbar-item">
+	{this.props.account}'s Recipes
+						</a>
+					)}
 					<div className="loginButton navbar-item">
 						{!this.props.account ? (
 							<a href="/userlogin">
