@@ -1,4 +1,4 @@
-# Fridge Scavenger (currently in development)
+# Fridge Scavenger
 This website is designed to allow users to search for recipes they're interested in making at home, as well as input ingredients they have lying around in the fridge in hopes that perhaps they can scrounge up a meal or two. In the (very near) future, users will actually be able to create an account, log in, and save the recipes they're interested in.
 
 ## Why?
