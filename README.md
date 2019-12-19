@@ -1,4 +1,4 @@
-# Fridge Scavenger (currently in development)
+# Fridge Scavenger
 This website is designed to allow users to search for recipes they're interested in making at home, as well as input ingredients they have lying around in the fridge in hopes that perhaps they can scrounge up a meal or two. In the (very near) future, users will actually be able to create an account, log in, and save the recipes they're interested in.
 
 ## Why?
@@ -23,5 +23,8 @@ For the backend, I've pivoted back and forth between using Firebase and using an
 ## No Comments
 After really thinking about it, I've never seen comments on a recipe website and thought, "Man, that really added a lot to this experience". So the comment system will be scraped. You might be thinking, "Oh, you just don't want to code that feature in", and you would be right, but I'd still maintain that a comment section is really unnecessary. Could I add it in the future? Absolutely. Will I? Maybe.
 
-## In Development
-Creating a completely separate repository for the express api to allow users to save recipes.
+## Backend Database
+The backend for this project is ultimately a postgres database being connected to with an express server that actually runs from a port (5423 or thereabouts) on my laptop. It doesn't have official hosting, so that basically means the second I close the terminal running the server, all login and otherwise database-related functionality will throw massive errors or 404s at the user. This isn't ideal, so I'll have to attach the express server to an Amazon EC2 instance in the future. On that note, the postgres database itself is also located locally, on this device (my laptop). Originally, I was dead-set on using Amazon's cloud database system, but kept getting unusual errors when trying to connect to it with express, so for the sake of time and ease, my local postgres configuration was used instead.
+
+## Password Encryption
+Password encryption is done through the bcrypt npm module. This module takes a password, hashes it x times (10 in this instance), then stores the hashed value in the database. Meaning, I, the developer, can't see anyone's password at any time. When looking at my database of users, I see a random mix of characters in the "password" column. When users login, the module compares the non-hashed password with the user's typed value to login. I can't be 100% sure that this is secure with no security holes whatsoever, so I would still recommend that users just set their passwords to "password".
