@@ -9,13 +9,14 @@ import Footer from "../../components/Footer";
 const RecipeDirections = props => {
 	const addRecipe = async e => {
 		e.preventDefault();
-		await axios.post(`http://localhost:5252/recipes/add`, {
+		await Axios.post(`http://localhost:5252/recipes/add`, {
 			account: props.account,
 			token: props.token,
-			recipe_name: props.summary.title,
-			recipe_id: props.summary.id,
-			recipe_image: props.summary.image
+			recipename: props.summary.title,
+			recipeid: props.summary.id,
+			recipeimage: props.summary.image
 		});
+		console.log(props.account, props.token, props.recipe_name, props.recipe_id, props.recipe_image);
 		alert("Your recipe has successfully been saved!");
 	};
 
@@ -26,7 +27,7 @@ const RecipeDirections = props => {
 					<div className="hero-body">
 						<div className="container has-text-centered">
 							<div className="content">
-								<p className="title">Time to get cookin'!</p>
+								<p className="title">{props.account}</p>
 							</div>
 						</div>
 					</div>
@@ -94,13 +95,19 @@ const RecipeDirections = props => {
 								</div>
 							</article>
 						</div>
-						
-					</div><button
-							className="button is-success"
-							type="submit"
-							onSubmit={addRecipe}
-							style={{display:"block", marginLeft:"auto", marginRight:"auto"}}
-						>Save Recipe</button>
+					</div>
+					<button
+						className="button is-success"
+						type="submit"
+						onClick={addRecipe}
+						style={{
+							display: "block",
+							marginLeft: "auto",
+							marginRight: "auto"
+						}}
+					>
+						Save Recipe
+					</button>
 				</section>
 				<Footer />
 			</Layout>
@@ -111,7 +118,7 @@ const RecipeDirections = props => {
 RecipeDirections.getInitialProps = async context => {
 	const { id } = context.query;
 	const res = await Axios.get(
-		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=cbdb4c6c328541689e7db2d210a6b528`
+		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=aeeadf9c72f14c55befd99ff1e40a70d`
 	);
 	const recipe = res.data;
 
@@ -120,18 +127,24 @@ RecipeDirections.getInitialProps = async context => {
 	const steps = recipeArray[0].steps;
 
 	const response = await Axios.get(
-		`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=cbdb4c6c328541689e7db2d210a6b528`
+		`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=aeeadf9c72f14c55befd99ff1e40a70d`
 	);
 
 	const ingredients = response.data;
 
 	const respond = await Axios.get(
-		`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&&apiKey=cbdb4c6c328541689e7db2d210a6b528`
+		`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&&apiKey=aeeadf9c72f14c55befd99ff1e40a70d`
 	);
 
 	const summary = respond.data;
 
-	return { steps, ingredients, summary };
+	return {
+		steps,
+		ingredients,
+		summary,
+		account: cookies(context).account || "",
+		token: cookies(context).token || ""
+	};
 };
 
 export default RecipeDirections;

@@ -13,7 +13,7 @@ const Scavenge = () => {
 
 	const onSearchSubmit = async term => {
 		const res = await Axios.get(
-			`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${term}&number=50&apiKey=cbdb4c6c328541689e7db2d210a6b528`
+			`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${term}&number=50&apiKey=aeeadf9c72f14c55befd99ff1e40a70d`
 		);
 
 		setRecipes(res.data);
