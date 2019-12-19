@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
 			document.cookie = `account=${response.data.account_name}; `;
 			document.cookie = `token=${response.data.browser_token}; `;
 			alert("Successfully logged in");
-			Router.push("/")
+			Router.push('/userprofile')
 		}
 	};
 	render() {

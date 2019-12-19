@@ -1,22 +1,16 @@
 import React from "react";
 import cookies from "next-cookies";
+import Router from "next/router";
 
 export default class Navbar extends React.Component {
-	static getInitialProps = async ctx => {
-		return {
-			account: cookies(ctx).account || "",
-			token: cookies(ctx).token || ""
-		};
-	};
-
-	reset = () => {
-		document.cookie =
-			"name=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+	reset = e => {
+		e.preventDefault();
+		document.cookie = `account=deleted;expires=Thu, 01 Jan 1970 00:00:01 GMT `;
+		document.cookie = `token=deleted; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+		Router.push("/login");
 	};
 
 	render() {
-		console.log(this.account);
-		console.log(this.token);
 		return (
 			<nav
 				className="navbar"
@@ -37,7 +31,7 @@ export default class Navbar extends React.Component {
 						Scavenge
 					</a>
 					<div className="loginButton navbar-item">
-						{!this.account ? (
+						{!this.props.account ? (
 							<a href="/userlogin">
 								<button className=" button is-success">
 									Login/ Signup

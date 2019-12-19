@@ -26,7 +26,7 @@ class userProfile extends React.Component {
 			`http://localhost:5252/recipes/retrieve`,
 			{ account, token }
 		);
-		this.setState({ ownedList: response.data });
+		this.setState({ recipes: response.data });
 	};
 
 	render() {
@@ -34,7 +34,7 @@ class userProfile extends React.Component {
 			<>
 				<Layout>
 					<div className="body"></div>
-
+					{this.state.recipes.map(recipe => <p>{recipe.name}</p>)}
 					<div className="footer">
 						<Footer />
 					</div>
