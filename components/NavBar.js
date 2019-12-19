@@ -3,11 +3,20 @@ import cookies from "next-cookies";
 import Router from "next/router";
 
 export default class Navbar extends React.Component {
+
+	static async getInitialProps(ctx) {
+		return {
+			account: cookies(ctx).account || "",
+			token: cookies(ctx).token || ""
+		};
+	}
+	
 	reset = e => {
 		e.preventDefault();
 		document.cookie = `account=deleted;expires=Thu, 01 Jan 1970 00:00:01 GMT `;
 		document.cookie = `token=deleted; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-		Router.push("/login");
+		alert("You have successfully logged out. Take care!")
+		Router.push("/");
 	};
 
 	render() {

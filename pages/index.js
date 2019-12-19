@@ -30,7 +30,6 @@ const Home = () => {
 						</div>
 					</div>
 				</section>
-				<p></p>
 				<div className="body is-flex-touch">
 					<section className="section">
 						<div className="box">

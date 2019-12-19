@@ -2,6 +2,7 @@ import React from "react";
 import cookies from "next-cookies";
 import axios from "axios";
 import Router from "next/router";
+import Link from "next/link";
 
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
@@ -39,12 +40,58 @@ class userProfile extends React.Component {
 		return (
 			<>
 				<Layout account={this.props.account}>
-					<div className="body"></div>
-					{this.state.recipes.map(recipe => (
-						<p>{recipe.name}</p>
-					))}
-					<div className="footer">
-						<Footer />
+					<section className="hero is-info" style={{ opacity: 0.5 }}>
+						<div className="hero-body">
+							<div className="container has-text-centered">
+								<p className="title">
+									Revisit your saved recipes!{" "}
+								</p>
+							</div>
+						</div>
+					</section>
+					<div className="body is-flex-touch">
+						<section className="section">
+							{this.state.recipes.map(recipe => (
+								<>
+									<div className="tile is-ancestor box">
+										<div className="tile">
+											<div className="content">
+												<figure>
+													<img
+														key={recipe.recipeid}
+														className="image"
+														src={recipe.recipeimage}
+														style={{
+															borderRadius: 10,
+															marginLeft: "auto",
+															marginRight: "auto",
+															display: "block"
+														}}
+													/>
+												</figure>
+											</div>
+										</div>
+										<div className="tile">
+											<div className="content">
+												<Link
+													href="/p/[id]"
+													as={`/p/${recipe.recipeid}`}
+												>
+													<a key={recipe.id}>
+														<p className="has-text-centered">
+															{recipe.recipename}
+														</p>
+													</a>
+												</Link>
+											</div>
+										</div>
+									</div>
+								</>
+							))}
+						</section>
+						<div className="footer">
+							<Footer />
+						</div>
 					</div>
 				</Layout>
 				<style jsx>
