@@ -1,6 +1,7 @@
 import React from "react";
 import cookies from "next-cookies";
 import axios from "axios";
+import Router from "next/router";
 
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
@@ -16,7 +17,12 @@ class userProfile extends React.Component {
 	}
 
 	componentDidMount() {
-		this.getRecipes();
+		if (!this.props.account && !this.props.token) {
+			alert("Please log in before accessing this page.");
+			Router.push("/userlogin");
+		} else {
+			this.getRecipes();
+		}
 	}
 
 	getRecipes = async () => {
@@ -32,9 +38,11 @@ class userProfile extends React.Component {
 	render() {
 		return (
 			<>
-				<Layout>
+				<Layout account={this.props.account}>
 					<div className="body"></div>
-					{this.state.recipes.map(recipe => <p>{recipe.name}</p>)}
+					{this.state.recipes.map(recipe => (
+						<p>{recipe.name}</p>
+					))}
 					<div className="footer">
 						<Footer />
 					</div>

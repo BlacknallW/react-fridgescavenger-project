@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 const Layout = props => {
 	return (
 		<div>
-			<NavBar />
+			<NavBar account={props.account}/>
 			<Head>
 				<title>FridgeScavenger</title>
 				<link rel="icon" href="/favicon.ico" />

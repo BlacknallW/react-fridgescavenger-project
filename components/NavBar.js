@@ -30,6 +30,9 @@ export default class Navbar extends React.Component {
 					<a href="/scavenge" className="navbar-item">
 						Scavenge
 					</a>
+					<a href="/userprofile" className="navbar-item">
+						Profile
+					</a>
 					<div className="loginButton navbar-item">
 						{!this.props.account ? (
 							<a href="/userlogin">
