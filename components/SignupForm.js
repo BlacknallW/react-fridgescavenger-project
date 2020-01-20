@@ -18,7 +18,7 @@ const SignupForm = () => {
 
 	const createUser = async () => {
 		const response = await axios.post(
-			"http://18.217.129.55/users/sign-up",
+			"http://localhost:5252/users/sign-up",
 			{
 				account: createUsername,
 				password: createPassword,

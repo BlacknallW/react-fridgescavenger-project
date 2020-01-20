@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import uuidv4 from "uuid/v4";
 
 
 
@@ -10,7 +9,7 @@ export default function ArticleCard() {
 	useEffect(() => {
 		(async () => {
 			const res = await Axios.get(
-				`https://newsapi.org/v2/everything?q=cooking -fuckton -fuck -shit -damn -bitch -ass -fucking&from=2019-12-11&apiKey=2412b7d48fe045f08fc92bc9140f561a&pageSize=5`
+				`https://newsapi.org/v2/everything?q=cooking&apiKey=5373ce724dd440c28b09430e811d8def&pageSize=5`
 			);
 
 			const articles = res.data.articles;
@@ -21,9 +20,9 @@ export default function ArticleCard() {
 	return (
 		<>
 			<div className="tile is-vertical is-flex-touch">
-				{articleList.map(article => (
+				{articleList.map((article, index) => (
 					<>
-						<div className="card" key={uuidv4()}>
+						<div className="card" key={index}>
 							<div className="card-image">
 								<a
 									href={article.url}

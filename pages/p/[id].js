@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 const RecipeDirections = props => {
 	const addRecipe = async e => {
 		e.preventDefault();
-		await Axios.post(`http://18.217.129.55/recipes/add`, {
+		await Axios.post(`http://localhost:5252/recipes/add`, {
 			account: props.account,
 			token: props.token,
 			recipename: props.summary.title,

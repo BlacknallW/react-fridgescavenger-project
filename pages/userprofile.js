@@ -30,7 +30,7 @@ class userProfile extends React.Component {
 		const account = this.props.account;
 		const token = this.props.token;
 		const response = await axios.post(
-			`http://18.217.129.55/recipes/retrieve`,
+			`http://localhost:5252/recipes/retrieve`,
 			{ account, token }
 		);
 		this.setState({ recipes: response.data });
