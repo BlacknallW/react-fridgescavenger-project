@@ -5,6 +5,9 @@ import NavBar from "./NavBar";
 const Layout = props => {
 	return (
 		<div>
+			<div className="has-text-centered box">
+				<p>Login System is currently down as database host changes. Sorry.</p>
+			</div>
 			<NavBar account={props.account}/>
 			<Head>
 				<title>FridgeScavenger</title>
