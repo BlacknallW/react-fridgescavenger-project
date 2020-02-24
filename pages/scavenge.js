@@ -7,7 +7,7 @@ import cookies from "next-cookies"
 import Layout from "../components/Layout";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import ArticleCard from "../components/ArticleCard";
+
 
 const Scavenge = (props) => {
 	const [recipes, setRecipes] = useState([]);
@@ -84,9 +84,6 @@ const Scavenge = (props) => {
 										</div>
 									</>
 								))}
-							</div>
-							<div className="articles">
-								<ArticleCard />
 							</div>
 						</div>
 					</section>

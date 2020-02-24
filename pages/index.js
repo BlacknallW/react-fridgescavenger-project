@@ -7,7 +7,7 @@ import cookies from "next-cookies"
 import SearchBar from "../components/SearchBar";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
-import ArticleCard from "../components/ArticleCard";
+
 
 const Home = (props) => {
 	const [recipes, setRecipes] = useState([]);
@@ -80,9 +80,6 @@ const Home = (props) => {
 										</div>
 									</>
 								))}
-							</div>
-							<div className="articles">
-								<ArticleCard />
 							</div>
 						</div>
 					</section>
