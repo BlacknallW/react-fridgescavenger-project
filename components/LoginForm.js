@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
 
 	loginSend = async () => {
 		event.preventDefault();
-		const response = await axios.post(`http://18.217.129.55/users/login`, {
+		const response = await axios.post(`http://http://localhost:5000/api/auth`, {
 			password: this.state.loginPassword,
 			email: this.state.loginEmail
 		});
