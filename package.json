@@ -8,17 +8,17 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"axios": "^0.19.0",
+		"axios": "^0.19.2",
 		"child_process": "^1.0.2",
 		"dotenv": "^8.2.0",
 		"fs": "0.0.1-security",
 		"isomorphic-unfetch": "^3.0.0",
-		"next": "^9.2.0",
+		"next": "^9.3.2",
 		"next-cookies": "^2.0.3",
-		"qs": "^6.9.1",
-		"react": "^16.12.0",
-		"react-dom": "^16.12.0",
+		"qs": "^6.9.3",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
 		"tls": "0.0.1",
-		"uuid": "^3.3.3"
+		"uuid": "^3.4.0"
 	}
 }
