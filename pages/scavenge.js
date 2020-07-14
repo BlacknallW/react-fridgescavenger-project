@@ -110,17 +110,6 @@ const Scavenge = (props) => {
 					footer {
 						margin-top: auto;
 					}
-					.grid-container {
-						display: grid;
-						grid-template-columns: 80% 1% auto;
-						grid-template-rows: auto;
-					}
-					.articles {
-						grid-column: 3/3;
-					}
-					.recipes {
-						grid-column: 1/1;
-					}
 					.body {
 						font-family: "Dosis", sans-serif;
 						font-size: 20px;

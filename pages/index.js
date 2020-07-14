@@ -32,18 +32,17 @@ const Home = (props) => {
 					</div>
 				</section>
 				<div className="body is-flex-touch">
-					<section className="section">
+					<section className="section grid-container">
 						<div className="box">
 							<SearchBar
 								onSubmit={onSearchSubmit}
 								placeholder="What do you want to make today?"
 							/>
 						</div>
-						<div className="grid-container">
 							<div className="recipes-box">
 								{recipes.map(recipe => (
 									<>
-										<div className="tile is-ancestor box">
+										<div className="tile is-ancestor box level">
 											<div className="tile">
 												<div className="content">
 													<figure>
@@ -81,7 +80,6 @@ const Home = (props) => {
 									</>
 								))}
 							</div>
-						</div>
 					</section>
 				</div>
 				<div className="footer">
@@ -105,16 +103,11 @@ const Home = (props) => {
 					footer {
 						margin-top: auto;
 					}
-					.grid-container {
-						display: grid;
-						grid-template-columns: 80% 1% auto;
-						grid-template-rows: auto;
-					}
-					.articles {
-						grid-column: 3/3;
-					}
-					.recipes {
-						grid-column: 1/1;
+					.recipes-box {
+						opacity: .95;
+						margin-left: auto;
+						margin-right: auto;
+						display: block;
 					}
 					.body {
 						font-family: "Dosis", sans-serif;

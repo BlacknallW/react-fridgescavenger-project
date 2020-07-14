@@ -16,7 +16,6 @@ const Layout = props => {
 					rel="stylesheet"
 					href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css"
 				/>
-				/>
 			</Head>
 			{props.children}
 		</div>
