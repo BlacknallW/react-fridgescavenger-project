@@ -7,8 +7,7 @@ const Layout = props => {
         <div>
             <div className="has-text-centered box">
                 <p>
-                    Login System is currently down as database host changes.
-                    Sorry.
+                    Migrating sign-in functionality to AWS Cognito. Buckle up, buckaroos!
                 </p>
             </div>
             <NavBar account={props.account} />
